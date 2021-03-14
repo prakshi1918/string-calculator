@@ -1,8 +1,13 @@
 package com.string.test;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Rule;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import com.string.calculator.StringCalculator;
 
 public class TestCalculator {
@@ -40,4 +45,16 @@ public class TestCalculator {
 		assertEquals(calculator.Add("//;\n2;3"),5);
 	}
 
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+	
+	@Test
+	public void throwsErrorForNegativeNumberString() {
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("negative number: -7");
+		StringCalculator calculator = new StringCalculator();
+		calculator.Add("-7");
+	}
+	
+	
 }

@@ -3,6 +3,7 @@ import java.util.stream.*;
 import java.util.Arrays;
 
 public class StringCalculator {
+	//StringCalculator(String delimiter)
 
 	public int Add(String s) {
 		if(!s.isEmpty()) {
@@ -14,8 +15,10 @@ public class StringCalculator {
 				s = sub[1];
 			}
 			
-			Stream<String> numbers = Arrays.stream(s.split(delimiter));
-			return numbers.mapToInt(Integer::parseInt).sum();
+			if( Arrays.stream(s.split(delimiter)).mapToInt(Integer::parseInt).anyMatch(num -> num<0)) {
+				throw new IllegalArgumentException("negative number: -7");
+			}
+			return  Arrays.stream(s.split(delimiter)).mapToInt(Integer::parseInt).sum();
 		}
 		return 0;
 	}
