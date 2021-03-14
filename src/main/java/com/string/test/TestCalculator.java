@@ -55,6 +55,13 @@ public class TestCalculator {
 		StringCalculator calculator = new StringCalculator();
 		calculator.Add("-7");
 	}
+	@Test
+	public void throwsErrorForNegativeNumbersString() {
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("negative number: -7,-8,-10");
+		StringCalculator calculator = new StringCalculator();
+		calculator.Add("9,-7,-8,-10,2");
+	}
 	
 	
 }
