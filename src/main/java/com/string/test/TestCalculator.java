@@ -24,5 +24,10 @@ public class TestCalculator {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(calculator.Add("1,2"),3);
 	}
+	@Test
+	public void multipleValueString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.Add("1,2,3"),6);
+	}
 
 }

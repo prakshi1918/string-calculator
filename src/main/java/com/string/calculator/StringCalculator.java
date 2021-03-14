@@ -1,16 +1,19 @@
 package com.string.calculator;
+import java.util.List;
+import java.util.stream.*;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
 	
 	public int Add(String s) {
-		String[] numbers = s.split(",");
-		if(s.isEmpty())
-			return 0;
-		if( s.length() == 1)
-			return stringToInt(s);
-		else
-			return Integer.parseInt(numbers[0])+ Integer.parseInt(numbers[1]);
+		if(!s.isEmpty()) {
+			Stream<String> numbers = Arrays.stream(s.split(","));
+			return numbers.mapToInt(Integer::parseInt).sum();
+		}
+		return 0;
 	}
 	
 	private boolean isEmpty(String input) {
@@ -19,9 +22,6 @@ public class StringCalculator {
 	private int stringToInt(String input) {
 		return Integer.parseInt(input);
 	}
-	/*public static void main(String[] args) {
-		
-		
-	}*/
+	
 
 }
