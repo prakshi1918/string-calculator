@@ -29,5 +29,10 @@ public class TestCalculator {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(calculator.Add("1,2,3"),6);
 	}
+	@Test
+	public void newlineDelimiterValueString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.Add("1\n2,3"),6);
+	}
 
 }
