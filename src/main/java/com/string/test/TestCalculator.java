@@ -84,5 +84,10 @@ public class TestCalculator {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(calculator.Add("//[-][;]\n1-2;3"),6);
 	}
+	@Test
+	public void acceptsDifferentDelimitersLengthString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.Add("//[--][;;]\n1--2;;3"),6);
+	}
 	
 }
