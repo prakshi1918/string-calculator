@@ -74,5 +74,10 @@ public class TestCalculator {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(calculator.Add("1003,1001"),0);
 	}
+	@Test
+	public void acceptsDelimiterArbitaryLengthString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.Add("//[***]\n1***2***3"),6);
+	}
 	
 }

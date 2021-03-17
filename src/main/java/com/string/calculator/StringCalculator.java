@@ -1,6 +1,7 @@
 package com.string.calculator;
 import java.util.stream.*;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     static int count = 0 ;
@@ -12,13 +13,19 @@ public class StringCalculator {
 		return count;
 	}
 
+	public static String parseDelimiter(String header){
+		String delimiter = header.substring(2);
+		if( delimiter.startsWith("["))
+			delimiter = delimiter.substring(1,delimiter.length() -1); 
+		return Pattern.quote(delimiter);
+	}
 	public int Add(String s) {
 		if(!s.isEmpty()) {
 			
 			String delimiter = ",|\n";
 			if(s.startsWith("//")) {
 				String[] sub = s.split("\n",2);
-				delimiter = sub[0].substring(2);
+				delimiter = parseDelimiter(sub[0]);// sub[0].substring(2);
 				s = sub[1];
 			}
 			
@@ -36,6 +43,5 @@ public class StringCalculator {
    public IntStream getNumberStream(String delimiter,String s) {	
 	return Arrays.stream(s.split(delimiter))
 		.mapToInt(Integer::parseInt);
-		//.anyMatch(num -> num<0)
    }
 }
