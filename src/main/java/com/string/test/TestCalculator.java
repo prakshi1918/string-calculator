@@ -63,5 +63,16 @@ public class TestCalculator {
 		calculator.Add("9,-7,-8,-10,2");
 	}
 	
+	@Test
+	public void numberOfTimesString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.GetCalledCount(),7);
+	}
+	
+	@Test
+	public void GreaterNumberSpecifiedString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.Add("1003,1001"),0);
+	}
 	
 }

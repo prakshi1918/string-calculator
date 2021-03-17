@@ -3,7 +3,14 @@ import java.util.stream.*;
 import java.util.Arrays;
 
 public class StringCalculator {
-	//StringCalculator(String delimiter)
+    static int count = 0 ;
+	public StringCalculator(){
+		count++;
+	}
+
+	public int GetCalledCount() {
+		return count;
+	}
 
 	public int Add(String s) {
 		if(!s.isEmpty()) {
@@ -21,7 +28,7 @@ public class StringCalculator {
 						.collect(Collectors.joining(","));
 				throw new IllegalArgumentException("negative number: "+negativeNumberSequence);
 			}
-			return  getNumberStream(delimiter,s).sum();
+			return  getNumberStream(delimiter,s).filter(num -> num<1000).sum();
 					//Arrays.stream(s.split(delimiter)).mapToInt(Integer::parseInt).sum();
 		}
 		return 0;
