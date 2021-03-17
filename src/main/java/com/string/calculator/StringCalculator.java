@@ -17,7 +17,9 @@ public class StringCalculator {
 		String delimiter = header.substring(2);
 		if( delimiter.startsWith("["))
 			delimiter = delimiter.substring(1,delimiter.length() -1); 
-		return Pattern.quote(delimiter);
+		return Stream.of(delimiter.split("]\\["))
+				.map(Pattern::quote)
+				.collect(Collectors.joining("|"));
 	}
 	public int Add(String s) {
 		if(!s.isEmpty()) {

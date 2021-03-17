@@ -66,7 +66,7 @@ public class TestCalculator {
 	@Test
 	public void numberOfTimesString() {
 		StringCalculator calculator = new StringCalculator();
-		assertEquals(calculator.GetCalledCount(),7);
+		assertEquals(calculator.GetCalledCount(),8);
 	}
 	
 	@Test
@@ -78,6 +78,11 @@ public class TestCalculator {
 	public void acceptsDelimiterArbitaryLengthString() {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(calculator.Add("//[***]\n1***2***3"),6);
+	}
+	@Test
+	public void acceptsDifferentDelimitersString() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(calculator.Add("//[-][;]\n1-2;3"),6);
 	}
 	
 }
